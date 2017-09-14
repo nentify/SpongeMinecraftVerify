@@ -5,9 +5,9 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.slf4j.Logger;
 import org.spongepowered.api.Game;
-import org.spongepowered.api.Sponge;
 import org.spongepowered.api.command.args.GenericArguments;
 import org.spongepowered.api.command.spec.CommandSpec;
+import org.spongepowered.api.entity.living.player.User;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.game.state.GamePreInitializationEvent;
 import org.spongepowered.api.event.game.state.GameStoppingEvent;
@@ -16,7 +16,6 @@ import org.spongepowered.api.scheduler.Task;
 import org.spongepowered.api.text.Text;
 
 import java.io.IOException;
-import java.util.UUID;
 
 @Plugin(id = MinecraftVerify.ID, name = MinecraftVerify.NAME)
 public class MinecraftVerify {
@@ -38,7 +37,7 @@ public class MinecraftVerify {
                 .description(Text.of("Verify your Minecraft account"))
                 .permission("")
                 .arguments(GenericArguments.string(Text.of("code")))
-                .executor(new VerifyCommand())
+                .executor(new VerifyCommand(this))
                 .build(); // permission?
 
         game.getCommandManager().register(this, verifyCommand, "verify");
@@ -55,11 +54,11 @@ public class MinecraftVerify {
         }
     }
 
-    public void verify(UUID playerUuid, String code) {
+    public void verify(User user, String code) {
         Task.builder()
                 .async()
                 .name("MinecraftVerify - Sending account verification code [" + code + "]")
-                .execute(new VerifyTask(this, httpClient, playerUuid, code))
+                .execute(new VerifyTask(this, httpClient, user, code))
                 .submit(this);
     }
 }

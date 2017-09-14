@@ -43,7 +43,7 @@ public class VerifyCommand implements CommandExecutor {
             return CommandResult.empty();
         }
 
-        plugin.verify(player.getUniqueId(), code);
+        plugin.verify(player, code);
 
         return CommandResult.success();
     }
