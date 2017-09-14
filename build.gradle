@@ -1,0 +1,17 @@
+plugins {
+    id 'org.spongepowered.plugin' version '0.8.1'
+}
+
+apply plugin: 'idea'
+apply plugin: 'java'
+
+group 'com.tekkify'
+version '1.0.0'
+description 'Verify your Minecraft account'
+
+ext.spongeApiVersion = '7.0.0-SNAPSHOT'
+
+dependencies {
+    compile "org.spongepowered:spongeapi:$spongeApiVersion"
+    compile 'org.apache.httpcomponents:httpclient:4.5.3'
+}
