@@ -84,6 +84,6 @@ public class VerifyTask implements Runnable {
         Task.builder()
                 .name("MinecraftVerify - Finishing verification [" + code + "]")
                 .execute(new FinishVerifyTask(user.getUniqueId(), code, accountName, success))
-                .submit(this);
+                .submit(plugin);
     }
 }
