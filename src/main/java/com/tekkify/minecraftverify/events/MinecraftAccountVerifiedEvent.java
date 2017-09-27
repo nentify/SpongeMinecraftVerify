@@ -1,4 +1,4 @@
-package com.tekkify.minecraftverify;
+package com.tekkify.minecraftverify.events;
 
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.event.cause.Cause;

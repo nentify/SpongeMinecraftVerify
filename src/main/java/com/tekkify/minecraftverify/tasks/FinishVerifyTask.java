@@ -1,5 +1,6 @@
-package com.tekkify.minecraftverify;
+package com.tekkify.minecraftverify.tasks;
 
+import com.tekkify.minecraftverify.events.MinecraftAccountVerifiedEvent;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;

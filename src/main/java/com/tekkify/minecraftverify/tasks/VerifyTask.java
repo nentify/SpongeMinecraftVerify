@@ -1,5 +1,7 @@
-package com.tekkify.minecraftverify;
+package com.tekkify.minecraftverify.tasks;
 
+import com.tekkify.minecraftverify.MinecraftVerify;
+import com.tekkify.minecraftverify.http.VerifyResponseHandler;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -47,10 +49,10 @@ public class VerifyTask implements Runnable {
 
         try {
             URI uri = new URIBuilder()
-                    .setScheme("http")
-                    .setHost("auth.tekkify.com")
-                    .setPath("/api/verify")
-                    .setParameter("token", "1234")
+                    .setScheme(plugin.getConfig().getUri().getScheme())
+                    .setHost(plugin.getConfig().getUri().getHost())
+                    .setPath(plugin.getConfig().getUri().getPath())
+                    .setParameter("token", plugin.getConfig().getToken())
                     .setParameter("code", code)
                     .setParameter("mc_uuid", user.getUniqueId().toString())
                     .setParameter("mc_username", user.getName())
