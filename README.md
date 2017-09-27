@@ -18,7 +18,7 @@ The plugin has one command.
 
 ### Verify
 
-Usage: `/verify <code>`
+Usage: `/verify <code>`  
 Permission: `minecraftverify.verify`
 
 Players use this command to verify themselves with a code provided by an external service. The code is sent back to the service to complete the verification. The command can be configured if you want it to be something other than `/verify`.
