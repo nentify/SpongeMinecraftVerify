@@ -10,7 +10,7 @@ The external service is expected to generate a code for the player. The player c
 
 This plugin is highly configurable through the config file. You must specify a shared, secret token which only the Minecraft server and external service know. This is used to prove that the request came from the Minecraft server. You must also configure the endpoint URI to send the request to.
 
-Optionally, you can change the length of the code the user can send in the command, as well as the command alias itself.
+Optionally, you can change the length of the code the player can send in the command, as well as the command alias itself.
 
 ## Events
 
@@ -25,3 +25,9 @@ If the verification was successful, a `MinecraftAccountVerifiedEvent.Success` ev
 #### Failed Verification Event
 
 If the verification failed, a `MinecraftAccountVerifiedEvent.Fail` event is emitted. This event contains no further information.
+
+## Libraries
+
+This plugin uses and shades the following libraries:
+
+* Apache HttpComponents **HttpClient**
