@@ -12,6 +12,17 @@ This plugin is highly configurable through the config file. You must specify a s
 
 Optionally, you can change the length of the code the player can send in the command, as well as the command alias itself.
 
+## Commands
+
+The plugin has one command.
+
+### Verify
+
+Usage: `/verify <code>`
+Permission: `minecraftverify.verify`
+
+Players use this command to verify themselves with a code provided by an external service. The code is sent back to the service to complete the verification. The command can be configured if you want it to be something other than `/verify`.
+
 ## Events
 
 ### Verification Event

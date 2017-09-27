@@ -63,10 +63,10 @@ public class MinecraftVerify {
         // Register command, command alias comes from config
         CommandSpec verifyCommand = CommandSpec.builder()
                 .description(Text.of("Verify your Minecraft account"))
-                .permission("")
+                .permission("minecraftverify.verify")
                 .arguments(GenericArguments.string(Text.of("code")))
                 .executor(new VerifyCommand(this))
-                .build(); // permission?
+                .build();
 
         game.getCommandManager().register(this, verifyCommand, config.getCommand());
 
