@@ -11,6 +11,7 @@ version '1.0.0'
 description 'Verify your Minecraft account'
 
 ext.spongeApiVersion = '7.0.0-SNAPSHOT'
+
 dependencies {
     compile "org.spongepowered:spongeapi:$spongeApiVersion"
     shadow 'org.apache.httpcomponents:httpclient:4.5.3'
