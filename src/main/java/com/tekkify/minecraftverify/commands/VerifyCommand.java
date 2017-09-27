@@ -39,7 +39,7 @@ public class VerifyCommand implements CommandExecutor {
 
         Player player = (Player) src;
 
-        if (code.length() != 10) {
+        if (code.length() != plugin.getConfig().getCodeLength()) {
             src.sendMessage(Text.of(TextColors.RED, "Verification code should be 8 characters long"));
             return CommandResult.empty();
         }

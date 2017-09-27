@@ -42,6 +42,7 @@ public class MinecraftVerify {
     @Inject
     @DefaultConfig(sharedRoot = true)
     private ConfigurationLoader<CommentedConfigurationNode> configLoader;
+    private CommentedConfigurationNode rootConfigNode;
 
     private ObjectMapper<Config>.BoundInstance configMapper;
 
@@ -54,6 +55,7 @@ public class MinecraftVerify {
         try {
             configMapper = ObjectMapper.forClass(Config.class).bindToNew();
             reloadConfig();
+            saveConfig();
         } catch (ObjectMappingException e) {
             logger.error("Failed to initialise config", e);
         }
@@ -100,10 +102,18 @@ public class MinecraftVerify {
 
     public void reloadConfig() {
         try {
-            CommentedConfigurationNode rootConfigNode = configLoader.load(ConfigurationOptions.defaults());
+            rootConfigNode = configLoader.load(ConfigurationOptions.defaults());
             config = configMapper.populate(rootConfigNode);
         } catch (IOException | ObjectMappingException e) {
             logger.error("Failed to load config", e);
+        }
+    }
+
+    public void saveConfig() {
+        try {
+            configLoader.save(rootConfigNode);
+        } catch (IOException e) {
+            logger.error("Failed to save config", e);
         }
     }
 }
